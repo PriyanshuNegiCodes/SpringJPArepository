@@ -15,14 +15,16 @@ import java.util.List;
 
 public class ProductController {
     ProductServiceImp productServiceImp;
+
     @Autowired
     //http://localhost:65500/api/v1/add-user this is the post link for the json
     //the base url is upto 65500 , api/v1 is the url of the contorller and add-user is the url of the class
     public ProductController(ProductServiceImp productServiceImp) {
         this.productServiceImp = productServiceImp;
     }
+
     @PostMapping("/product")
-    public ResponseEntity<?> saveProduct(@RequestBody Product product){
+    public ResponseEntity<?> saveProduct(@RequestBody Product product) {
 
         return new ResponseEntity<>(productServiceImp.saveProduct(product), HttpStatus.CREATED);
     }
@@ -33,15 +35,26 @@ public class ProductController {
     public ResponseEntity<?> getAllProducts() {
         return new ResponseEntity<>(productServiceImp.getProducts(), HttpStatus.OK);
     }
+
     //htttp://localhost:65500/api/v1/delete-user/{id}
     @DeleteMapping("/delete-user/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable int Id){
+    public ResponseEntity<?> deleteUser(@PathVariable int Id) {
         return new ResponseEntity<>(productServiceImp.deleteUser(Id), HttpStatus.OK);
     }
-//    http://localhost:66550/api/v1/update-product/{id}
+
+    //    http://localhost:66550/api/v1/update-product/{id}
     @PutMapping("/updateProduct/{id}")
-    public ResponseEntity updateProduct(@RequestBody Product product, @PathVariable int id){
-        return new ResponseEntity(productServiceImp.updateProduct(product,id ), HttpStatus.OK);
+    public ResponseEntity updateProduct(@RequestBody Product product, @PathVariable int id) {
+        return new ResponseEntity(productServiceImp.updateProduct(product, id), HttpStatus.OK);
     }
 
+    @GetMapping("product/{id}")
+    public ResponseEntity getProductById(@PathVariable int id) {
+        return new ResponseEntity(productServiceImp.getProductById(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/products/{name}")
+    public ResponseEntity getProductByName(@PathVariable String name) {
+        return new ResponseEntity(productServiceImp.getProductByName(name), HttpStatus.OK);
+    }
 }

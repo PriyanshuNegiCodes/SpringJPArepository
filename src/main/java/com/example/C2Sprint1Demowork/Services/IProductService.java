@@ -9,4 +9,6 @@ public interface IProductService {
     List<Product> getProducts();
     public boolean deleteUser(int ProductId);
     public Product updateProduct(Product product, int ProductId);
+    public Product getProductById(int productId);
+    public List<Product> getProductByName(String name);
 }

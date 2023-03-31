@@ -55,4 +55,14 @@ public class ProductServiceImp implements IProductService{
 
     }
 
+    @Override
+    public Product getProductById(int productId) {
+        return productRepository.findById(productId).get();
+    }
+
+    @Override
+    public List<Product> getProductByName(String name) {
+        return productRepository.findByName(name);
+    }
+
 }
