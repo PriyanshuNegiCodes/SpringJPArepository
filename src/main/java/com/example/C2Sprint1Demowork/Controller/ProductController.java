@@ -37,9 +37,9 @@ public class ProductController {
     }
 
     //htttp://localhost:65500/api/v1/delete-user/{id}
-    @DeleteMapping("/delete-user/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable int Id) {
-        return new ResponseEntity<>(productServiceImp.deleteUser(Id), HttpStatus.OK);
+    @DeleteMapping("/delete-product/{id}")
+    public ResponseEntity<?> deleteProduct(@PathVariable int Id) {
+        return new ResponseEntity<>(productServiceImp.deleteProduct(Id), HttpStatus.OK);
     }
 
     //    http://localhost:66550/api/v1/update-product/{id}

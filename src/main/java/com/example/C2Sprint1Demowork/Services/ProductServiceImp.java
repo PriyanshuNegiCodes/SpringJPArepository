@@ -30,7 +30,7 @@ public class ProductServiceImp implements IProductService{
     }
 
     @Override
-    public boolean deleteUser(int ProductId) {
+    public boolean deleteProduct(int ProductId) {
         productRepository.deleteById(ProductId);
         return true;
     }
