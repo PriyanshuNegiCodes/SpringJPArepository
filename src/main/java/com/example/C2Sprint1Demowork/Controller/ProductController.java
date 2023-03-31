@@ -38,14 +38,14 @@ public class ProductController {
 
     //htttp://localhost:65500/api/v1/delete-user/{id}
     @DeleteMapping("/delete-product/{id}")
-    public ResponseEntity<?> deleteProduct(@PathVariable int Id) {
-        return new ResponseEntity<>(productServiceImp.deleteProduct(Id), HttpStatus.OK);
+    public ResponseEntity<?> deleteProduct(@PathVariable int id) {
+        return new ResponseEntity<>(productServiceImp.deleteProduct(id), HttpStatus.OK);
     }
 
     //    http://localhost:66550/api/v1/update-product/{id}
     @PutMapping("/updateProduct/{id}")
-    public ResponseEntity updateProduct(@RequestBody Product product, @PathVariable int id) {
-        return new ResponseEntity(productServiceImp.updateProduct(product, id), HttpStatus.OK);
+    public ResponseEntity<?> updateProduct(@RequestBody Product product, @PathVariable int id) {
+        return new ResponseEntity<>(productServiceImp.updateProduct(product, id), HttpStatus.OK);
     }
 
     @GetMapping("product/{id}")
@@ -54,7 +54,7 @@ public class ProductController {
     }
 
     @GetMapping("/products/{name}")
-    public ResponseEntity getProductByName(@PathVariable String name) {
-        return new ResponseEntity(productServiceImp.getProductByName(name), HttpStatus.OK);
+    public ResponseEntity<?> getProductByName(@PathVariable String name) {
+        return new ResponseEntity<>(productServiceImp.getProductByName(name), HttpStatus.OK);
     }
 }
